@@ -1,3 +1,5 @@
 node_modules/
 .env
 .DS_Store
+SUBMISSION_NOTE.txt
+submission-zips/
