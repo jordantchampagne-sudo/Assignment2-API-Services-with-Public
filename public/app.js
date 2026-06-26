@@ -257,7 +257,6 @@ function renderWeather(data, sourceLabel) {
   updateWeatherVisual(data);
   weatherMeta.textContent = `Source: ${sourceLabel} | Last updated: ${time}`;
   weatherResult.innerHTML = `
-    <p><strong>Location:</strong> ${data.location}</p>
     <p><strong>Temperature:</strong> ${data.temperatureC} C</p>
     <p><strong>High / Low:</strong> ${highText} / ${lowText}</p>
     <p><strong>Timestamp:</strong> ${time}</p>

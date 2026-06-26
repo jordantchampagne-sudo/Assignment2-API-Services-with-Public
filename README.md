@@ -27,6 +27,23 @@ This project is a standalone Node/Express website that provides:
 5. Open in browser:
    - `http://localhost:8080`
 
+## Deployment
+This project requires a Node.js server, so GitHub Pages cannot host the live app directly.
+
+### Recommended: Render.com
+1. Create a new Web Service on Render.
+2. Connect it to the `main` branch of this repository.
+3. Use these settings:
+   - Environment: `Node`
+   - Build command: `npm install`
+   - Start command: `npm start`
+4. Add required environment variables on Render:
+   - `OPENWEATHER_API_KEY`
+   - `EXCHANGERATE_API_KEY`
+   - `PORT` (optional; Render provides one automatically)
+
+A `render.yaml` file is included to support Render auto-deploy.
+
 ## Files to know
 - `server.js` - backend API proxy and static file server
 - `public/index.html` - main website markup
