@@ -31,12 +31,21 @@ function loadWeather() {
 }
 
 function canCallApi() {
+  // Basic per-session cooldown to prevent rapid repeated calls.
   const last = Number(sessionStorage.getItem(WEATHER_LAST_CALL_KEY) || 0);
   return Date.now() - last >= WEATHER_RATE_LIMIT_MS;
 }
 
 function markCall() {
   sessionStorage.setItem(WEATHER_LAST_CALL_KEY, String(Date.now()));
+}
+
+async function parseJsonSafe(response) {
+  try {
+    return await response.json();
+  } catch {
+    return {};
+  }
 }
 
 function renderWeather(data) {
@@ -53,11 +62,10 @@ async function fetchWeather() {
   }
 
   setStatus("Fetching weather data...");
-  markCall();
 
   try {
     const response = await fetch("/api/weather");
-    const data = await response.json();
+    const data = await parseJsonSafe(response);
 
     if (!response.ok) {
       throw new Error(data.error || "Weather request failed");
@@ -66,6 +74,7 @@ async function fetchWeather() {
     const payload = { ...data, savedAt: Date.now() };
     renderWeather(payload);
     saveWeather(payload);
+    markCall();
     setStatus("Weather updated.", "ok");
   } catch (error) {
     setStatus(`Error: ${error.message}`, "warn");
@@ -76,6 +85,7 @@ function loadCacheIfFresh() {
   const cached = loadWeather();
   if (!cached) return false;
 
+  // Serve from localStorage first; refresh from API once cache is stale.
   const age = Date.now() - Number(cached.savedAt || 0);
   if (age > WEATHER_CACHE_TTL_MS) return false;
 

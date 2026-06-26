@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Snow icon">
+  <rect width="120" height="120" fill="#ecf5fb"/>
+  <circle cx="52" cy="45" r="16" fill="#c2cedb"/>
+  <circle cx="68" cy="41" r="20" fill="#d0dae5"/>
+  <rect x="36" y="46" width="56" height="18" rx="9" fill="#c2cedb"/>
+  <g fill="#6fa8dc">
+    <circle cx="45" cy="82" r="4"/>
+    <circle cx="60" cy="84" r="4"/>
+    <circle cx="75" cy="82" r="4"/>
+  </g>
+</svg>

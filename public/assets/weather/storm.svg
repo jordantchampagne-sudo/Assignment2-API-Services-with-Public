@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Storm icon">
+  <rect width="120" height="120" fill="#dde5f0"/>
+  <circle cx="52" cy="45" r="16" fill="#aebdd0"/>
+  <circle cx="68" cy="41" r="20" fill="#bbc8d8"/>
+  <rect x="36" y="46" width="56" height="18" rx="9" fill="#aabacc"/>
+  <polygon points="62,70 50,92 61,92 54,108 74,82 62,82" fill="#f5b301"/>
+</svg>

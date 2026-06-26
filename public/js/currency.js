@@ -31,6 +31,7 @@ function fillCurrencySelect(selectEl, selected) {
 }
 
 function canCallApi() {
+  // Keep API usage under control for repeated user clicks/submits.
   const lastCall = Number(sessionStorage.getItem(LAST_CALL_KEY) || 0);
   const elapsed = Date.now() - lastCall;
   return elapsed >= RATE_LIMIT_MS;
@@ -38,6 +39,14 @@ function canCallApi() {
 
 function markApiCall() {
   sessionStorage.setItem(LAST_CALL_KEY, String(Date.now()));
+}
+
+async function parseJsonSafe(response) {
+  try {
+    return await response.json();
+  } catch {
+    return {};
+  }
 }
 
 function saveCache(payload) {
@@ -68,11 +77,10 @@ async function fetchConversion(amount, from, to) {
   }
 
   setStatus("Fetching exchange rate...");
-  markApiCall();
 
   try {
     const response = await fetch(`/api/exchange?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&amount=${encodeURIComponent(amount)}`);
-    const data = await response.json();
+    const data = await parseJsonSafe(response);
 
     if (!response.ok) {
       throw new Error(data.error || "Exchange request failed");
@@ -80,6 +88,7 @@ async function fetchConversion(amount, from, to) {
 
     render(data);
     saveCache({ ...data, savedAt: Date.now() });
+    markApiCall();
     setStatus("Exchange rate updated.", "ok");
   } catch (error) {
     setStatus(`Error: ${error.message}`, "warn");
@@ -90,6 +99,7 @@ function loadCacheIfFresh() {
   const cached = getCache();
   if (!cached) return false;
 
+  // Reuse local data until TTL expires, then allow fresh API retrieval.
   const age = Date.now() - Number(cached.savedAt || 0);
   if (age > CACHE_TTL_MS) return false;
 

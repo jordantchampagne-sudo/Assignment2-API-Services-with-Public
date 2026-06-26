@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Rain icon">
+  <rect width="120" height="120" fill="#e5edf7"/>
+  <circle cx="52" cy="45" r="16" fill="#b6c4d5"/>
+  <circle cx="68" cy="41" r="20" fill="#c4d0df"/>
+  <rect x="36" y="46" width="56" height="18" rx="9" fill="#b0bfd0"/>
+  <g stroke="#3f7fca" stroke-width="5" stroke-linecap="round">
+    <line x1="45" y1="72" x2="40" y2="90"/>
+    <line x1="60" y1="72" x2="55" y2="90"/>
+    <line x1="75" y1="72" x2="70" y2="90"/>
+  </g>
+</svg>

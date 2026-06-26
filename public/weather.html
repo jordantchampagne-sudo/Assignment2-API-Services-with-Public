@@ -3,50 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Assignment 2 | Calgary Weather</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Assignment 2 | Weather Redirect</title>
+  <meta http-equiv="refresh" content="0; url=index.html" />
 </head>
 <body>
-  <header class="site-header">
-    <h1>Assignment 2 API Services</h1>
-    <nav>
-      <a href="index.html">Currency Converter</a>
-      <a class="active" href="weather.html">Weather Widget</a>
-    </nav>
-  </header>
-
-  <main class="shell">
-    <section class="card">
-      <h2>Current Calgary Weather</h2>
-      <p>Real-time weather using external API data.</p>
-
-      <div class="weather-grid">
-        <article>
-          <h3>Location</h3>
-          <p id="weatherLocation">Calgary, CA</p>
-        </article>
-        <article>
-          <h3>Temperature</h3>
-          <p id="weatherTemp">-- °C</p>
-        </article>
-        <article>
-          <h3>Description</h3>
-          <p id="weatherDescription">Waiting for data...</p>
-        </article>
-        <article>
-          <h3>Timestamp</h3>
-          <p id="weatherTime">-</p>
-        </article>
-      </div>
-
-      <button id="refreshWeatherBtn" type="button">Refresh Weather</button>
-      <p id="weatherStatus" class="status" aria-live="polite"></p>
-    </section>
-  </main>
-
-  <script src="js/weather.js"></script>
+  <p>Redirecting to the current Assignment 2 page...</p>
+  <script>
+    window.location.replace("index.html");
+  </script>
 </body>
 </html>

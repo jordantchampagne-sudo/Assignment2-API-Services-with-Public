@@ -1,34 +1,41 @@
-# Assignment 2: Utilizing External API Services
+# Assignment 2 - Utilizing External API Services
 
-This project includes two pages:
-- Currency converter (`public/index.html`)
-- Calgary weather widget (`public/weather.html`)
+This project includes:
+- Weather service for Calgary (temperature, description, timestamp)
+- Currency exchange converter with 22 currencies
+- Local/session storage caching
+- Rate limiting
+- API key protection via `.env`
 
-## Features
-- Uses two external APIs:
-  - OpenWeatherMap for current Calgary weather
-  - ExchangeRate-API for conversion rates
-- Displays weather temperature, description, and timestamp
-- Converts currency with amount, from, and to selections (12 currencies)
-- Shows exchange rate line (example: 1 USD = 1.3642 CAD)
-- Uses localStorage for cache persistence and sessionStorage for rate limiting state
-- Applies API call cooldown (10 seconds) and cache TTL windows
+## APIs Used
+- Weather: OpenWeather Current Weather API
+- Currency: ExchangeRate-API
 
 ## Setup
-1. Install dependencies:
+1. Open terminal in `assignment2-api-services`
+2. Install dependencies:
    - `npm install`
-2. Create a `.env` file from `.env.example`
-3. Add your API keys in `.env`
-4. Run the app:
+3. Create `.env` in this folder (same level as `server.js`):
+   - `OPENWEATHER_API_KEY=your_key_here`
+   - `EXCHANGERATE_API_KEY=your_key_here`
+   - `PORT=8080`
+4. Start the app:
    - `npm start`
 5. Open:
-   - `http://localhost:3000/index.html`
-   - `http://localhost:3000/weather.html`
+   - `http://localhost:8080`
 
-## Security
-- `.env` is ignored by git via `.gitignore`
-- API keys are read server-side and are not exposed in repository files
+## Assignment Requirement Mapping
+- Weather for Calgary with temp, description, timestamp: implemented in `/api/weather` and rendered on page.
+- Currency converter with at least 10 currencies and from/to selection: implemented in converter UI (22 available).
+- Exchange rate display (example `1 USD = 1.44 CAD`): shown in converter result area.
+- API key protection: keys loaded from `.env` on server, never hard-coded in frontend.
+- Data persistency:
+  - Weather cached in `localStorage`
+   - Exchange rates cached in `sessionStorage` (per base currency)
+- Rate limiting:
+  - Server-side endpoint cooldowns
+  - Client-side click cooldowns
 
-## AI Declaration
-GitHub Copilot was used to help draft code, explain parts of the assignment by drawing parallels to PLC programming and robotics principles, and help fix errors and refine the code.
-Technical background: PLC programming and robotics systems.
+## Notes
+- Do not commit `.env`.
+- If weather/currency requests fail, check API keys first.

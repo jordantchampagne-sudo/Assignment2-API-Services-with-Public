@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Cloudy icon">
+  <rect width="120" height="120" fill="#eaf0f6"/>
+  <circle cx="50" cy="62" r="18" fill="#cfd9e6"/>
+  <circle cx="68" cy="56" r="22" fill="#d8e2ee"/>
+  <circle cx="84" cy="64" r="16" fill="#c2cedb"/>
+  <rect x="35" y="64" width="62" height="20" rx="10" fill="#c2cedb"/>
+</svg>

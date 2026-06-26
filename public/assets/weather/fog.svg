@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Fog icon">
+  <rect width="120" height="120" fill="#edf1f5"/>
+  <circle cx="52" cy="43" r="16" fill="#cfd6de"/>
+  <circle cx="68" cy="39" r="20" fill="#d9e0e7"/>
+  <rect x="36" y="44" width="56" height="18" rx="9" fill="#c8d1da"/>
+  <g stroke="#9ca8b3" stroke-width="4" stroke-linecap="round">
+    <line x1="26" y1="76" x2="94" y2="76"/>
+    <line x1="20" y1="86" x2="88" y2="86"/>
+    <line x1="30" y1="96" x2="98" y2="96"/>
+  </g>
+</svg>

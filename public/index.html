@@ -1,48 +1,76 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!--
+    Assignment 2: Utilizing External API Services
+    Author: Jordan Champagne
+    Weather: OpenWeather API (Calgary)
+    Currency: ExchangeRate-API
+    API keys are protected in server-side .env and not committed.
+    AI-use declaration:
+    GitHub Copilot was used to help draft code, explain parts of the assignment by drawing parallels to PLC programming and robotics principles, and help fix errors and refine the code.
+  -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Assignment 2 | API Services</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Assignment 2 | External API Services</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <h1>Assignment 2 API Services</h1>
-    <nav>
-      <a class="active" href="index.html">Currency Converter</a>
-      <a href="weather.html">Weather Widget</a>
-    </nav>
+  <header class="page-header">
+    <h1>Assignment 2: External API Services</h1>
+    <p>Live Weather for Calgary and Currency Conversion Using External APIs</p>
   </header>
 
-  <main class="shell">
+  <main class="layout">
     <section class="card">
-      <h2>Currency Exchange Service</h2>
-      <p>Convert between currencies with live exchange rates.</p>
+      <h2>Current Calgary Weather</h2>
+      <p class="hint">Displays Temperature, Daily High/Low, and Timestamp</p>
+      <div class="form-grid weather-form">
+        <label for="locationSelect">Location</label>
+        <select id="locationSelect"></select>
+      </div>
+      <div class="weather-visual" id="weatherVisual" aria-live="polite">
+        <img id="weatherIcon" class="weather-icon" src="assets/weather/clear.svg" alt="Weather condition icon" />
+        <p id="weatherMood" class="weather-mood">Select a location and load weather.</p>
+      </div>
+      <button id="loadWeatherBtn" type="button">Load Weather</button>
+      <div id="weatherStatus" class="status" aria-live="polite"></div>
+      <div id="weatherMeta" class="result meta" aria-live="polite"></div>
+      <div id="weatherResult" class="result" aria-live="polite"></div>
+    </section>
 
-      <form id="currencyForm" class="grid-form">
+    <section class="card">
+      <h2>Currency Exchange</h2>
+      <p class="hint">Select Currencies and Convert a Value Using Current Exchange Rates</p>
+
+      <div class="form-grid currency-form">
         <label for="amount">Amount</label>
-        <input id="amount" type="number" min="0.01" step="0.01" value="100" required />
+        <input id="amount" type="number" min="0" step="0.01" value="1" />
 
-        <label for="fromCurrency">From Currency</label>
-        <select id="fromCurrency" required></select>
+        <label for="fromCurrency">From</label>
+        <div class="select-with-flag">
+          <img id="fromFieldFlag" class="select-flag" src="" alt="From currency flag" />
+          <select id="fromCurrency"></select>
+        </div>
 
-        <label for="toCurrency">To Currency</label>
-        <select id="toCurrency" required></select>
+        <label for="toCurrency">To</label>
+        <div class="select-with-flag">
+          <img id="toFieldFlag" class="select-flag" src="" alt="To currency flag" />
+          <select id="toCurrency"></select>
+        </div>
+      </div>
 
-        <button id="convertBtn" type="submit">Convert</button>
-      </form>
-
-      <p id="rateLine" class="rate-line">Exchange rate will appear here.</p>
-      <p id="conversionResult" class="result">Converted amount will appear here.</p>
-      <p id="currencyMeta" class="meta">Last updated: -</p>
-      <p id="currencyStatus" class="status" aria-live="polite"></p>
+      <div class="action-row">
+        <button id="convertBtn" type="button">Convert</button>
+        <button id="reverseBtn" type="button" class="btn-reverse">Reverse</button>
+      </div>
+      <div id="exchangeStatus" class="status" aria-live="polite"></div>
+      <div id="exchangeRateLine" class="result" aria-live="polite"></div>
+      <div id="exchangeMeta" class="result meta" aria-live="polite"></div>
+      <div id="exchangeResult" class="result result-large" aria-live="polite"></div>
     </section>
   </main>
 
-  <script src="js/currency.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
